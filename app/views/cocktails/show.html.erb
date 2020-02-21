@@ -18,9 +18,10 @@
     </div>
   <% end %>
   <div class="info-container">
+    <h3>Add a new ingredient</h3>
     <%= f.input :description %>
     <%= f.association :ingredient %>
-    <%= f.submit "Add dose", class: "btn btn-primary" %>
+    <%= f.submit "Add ingredient", class: "btn btn-primary" %>
   </div>
 <% end %>
-<p><%= link_to 'Back to cocktails list', cocktails_path %></p>
+<p><%= link_to "Back to the cocktails list", cocktails_path %></p>
