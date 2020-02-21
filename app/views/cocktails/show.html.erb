@@ -18,7 +18,7 @@
     </div>
   <% end %>
   <div class="info-container">
-    <h3>Add a new ingredient</h3>
+    <h5>Add a new ingredient</h5>
     <%= f.input :description %>
     <%= f.association :ingredient %>
     <%= f.submit "Add ingredient", class: "btn btn-primary" %>
@@ -43,7 +43,7 @@
     </div>
   <% end %>
   <div class="info-container">
-    <h3>Add a new review</h3>
+    <h5>Add a new review</h5>
     <%= f.input :content %>
     <%= f.input :rating %>
     <%= f.submit "Add review", class: "btn btn-primary" %>
