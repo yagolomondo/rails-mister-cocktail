@@ -1,8 +1,8 @@
 <h1><%= @cocktail.name %></h1>
 <% if @cocktail.doses.count > 0 %>
-  <h3>It uses the following doses</h3>
+  <h3>It uses the following ingredients</h3>
 <% else %>
-  <h3>No doses for this cocktail</h3>
+  <h3>No ingredients for this cocktail</h3>
 <% end %>
 <% @cocktail.doses.each do |dose| %>
   <p><%= dose.ingredient.name %> - <%= dose.description %> <%= link_to 'Remove dose', dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %></p>
@@ -22,6 +22,31 @@
     <%= f.input :description %>
     <%= f.association :ingredient %>
     <%= f.submit "Add ingredient", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<% if @cocktail.reviews.count > 0 %>
+  <h3>Reviews</h3>
+<% else %>
+  <h3>No reviews yet</h3>
+<% end %>
+<% @cocktail.reviews.each do |review| %>
+  <p><%= review.rating %> stars - <%= review.content %></p>
+<% end %>
+<%= simple_form_for [@cocktail, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="info-container">
+    <h3>Add a new review</h3>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.submit "Add review", class: "btn btn-primary" %>
   </div>
 <% end %>
 <p><%= link_to "Back to the cocktails list", cocktails_path %></p>
